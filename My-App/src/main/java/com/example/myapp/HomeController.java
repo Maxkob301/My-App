@@ -1,6 +1,8 @@
 package com.example.myapp;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -12,9 +14,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.apache.commons.io.FileUtils;
 
 public class HomeController implements ImageController {
+    File pathImagesDirectory = new File("C:\\Users\\Маksim\\My-app\\My-App\\src\\main\\java\\Images");
+    File resultPathDirectory = new File("C:\\Users\\Маksim\\DownLoadIamges");
     DataBaseHandler handler = new DataBaseHandler();
     @FXML
     private ResourceBundle resources;
@@ -54,6 +60,7 @@ public class HomeController implements ImageController {
                 throw new RuntimeException(e);
             }
             ImageView.setImage(getImage(resultImage));
+            ImageView.setId(searchText);
 
 
         });
@@ -61,7 +68,7 @@ public class HomeController implements ImageController {
           String newNameImage = createField.getText();
           Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
           alert.setTitle("Добавить файл");
-          alert.setHeaderText("Вы дуйствительно хотите добавить этот файл?");
+          alert.setHeaderText("Вы действительно хотите добавить этот файл?");
           Optional<ButtonType> optional = alert.showAndWait();
             if(optional.get() == ButtonType.OK){
           handler.CreateImageName(newNameImage);
@@ -70,6 +77,21 @@ public class HomeController implements ImageController {
         });
         removeButton.setOnAction(event ->{
             handler.removeNameImage();
+        });
+        ImageView.setOnMouseClicked(event ->{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Скачать изображение");
+            alert.setHeaderText("Вы действительно хотите скачать это изображение?");
+            Optional<ButtonType> optional = alert.showAndWait();
+            if(optional.get() == ButtonType.OK){
+                File f = new File(pathImagesDirectory + "\\" + ImageView.getId() + ".jpg" );
+                try {
+                    FileUtils.copyFileToDirectory(f,resultPathDirectory);
+                    System.out.println("Копирование успешно");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         });
     }
 

@@ -1,7 +1,6 @@
 package com.example.myapp;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.sql.*;
 
 import javafx.stage.FileChooser;
@@ -38,9 +37,7 @@ public class DataBaseHandler extends Configs {
             statement.setString(5,user.getCountryName());
             statement.setString(6, user.getGender());
             statement.executeUpdate();
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        }catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -53,18 +50,16 @@ public class DataBaseHandler extends Configs {
             statement.setString(2, user.getPasswordName());
             resultSet = statement.executeQuery();
 
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        }catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return  resultSet;
     }
     public String getImageFromTable(String nameImage) throws SQLException, ClassNotFoundException {
-        ResultSet resultSet = null;
+        ResultSet resultSet;
         String name = null;
         Statement statement = getDbConnection().createStatement();
-        String select = "SELECT * FROM images WHERE ImageName " + "= " + "\'" + nameImage + "\'";
+        String select = "SELECT * FROM images WHERE ImageName " + "= " + "'" + nameImage + "'";
         resultSet = statement.executeQuery(select);
          while(resultSet.next()){
              name = resultSet.getString("ImageName");
@@ -79,7 +74,7 @@ public class DataBaseHandler extends Configs {
         try {
             filePath = chooser.showOpenDialog(null);
             if(filePath == null){
-                System.out.println("");
+                System.out.println();
             }else {
                 //Создание соединения
                 Statement statement = getDbConnection().createStatement();
@@ -88,11 +83,7 @@ public class DataBaseHandler extends Configs {
                 File file1 = new File(pathImagesDirectory + "\\" + filePath.getName());
                 File file2 = new File(pathImagesDirectory + "\\" + nameImage + ".jpg");
                 FileUtils.moveFile(file1, file2);
-            }} catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+            }} catch (SQLException | ClassNotFoundException | IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -103,15 +94,12 @@ public class DataBaseHandler extends Configs {
         File fileRemove;
         try {
             statement = getDbConnection().createStatement();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        String removeName = null;
         fileRemove = chooser.showOpenDialog(null);
         if(fileRemove == null){
-            System.out.println("");
+            System.out.println();
         }else {
             String remove = "DELETE FROM images" + " WHERE " + "(" + "\"ImageName\"" + " = " + "\"" + fileRemove.getName() + "\"" + ")";
             File deleteFile = new File(pathImagesDirectory + "\\" + fileRemove.getName());

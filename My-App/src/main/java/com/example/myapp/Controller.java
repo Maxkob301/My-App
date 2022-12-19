@@ -1,27 +1,19 @@
 package com.example.myapp;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
-import Animation.Shake;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class Controller {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private TextField Login;
@@ -54,9 +46,7 @@ public class Controller {
             }
         });
 
-       loginSignButton.setOnAction(event -> {
-         openNewScene("SignUp.fxml");
-       });
+       loginSignButton.setOnAction(event -> openNewScene("SignUp.fxml"));
 
     }
     //Ищем пользователя в базе данных,если его нет,то выводим сообщение об этом и предлагаем зарегестрироваться
@@ -73,7 +63,6 @@ public class Controller {
             counter++;
             if( counter >= 1){
                openNewScene("app.fxml");
-               break;
             }else {
                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                alert.setTitle("Connection result");
@@ -85,8 +74,8 @@ public class Controller {
                } else if (optional.get() == ButtonType.CANCEL) {
                    break;
                }
-               break;
             }
+            break;
         }
 
     }

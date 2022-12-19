@@ -8,6 +8,7 @@ module com.example.myapp {
     requires java.sql;
     requires java.desktop;
     requires org.apache.commons.io;
+    requires mysql.connector.java;
 
     opens com.example.myapp to javafx.fxml;
     exports com.example.myapp;

@@ -1,8 +1,6 @@
 
 package com.example.myapp;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -11,15 +9,8 @@ import javafx.scene.control.TextField;
 
 public class SignUpController {
 
-    @FXML
-    private ResourceBundle resources;
 
-    @FXML
-    private URL location;
-
-    @FXML
-    private CheckBox CheckBoxFemale;
-
+    public CheckBox CheckBoxFemale;
     @FXML
     private CheckBox CheckBoxMale;
 
@@ -43,9 +34,7 @@ public class SignUpController {
 
     @FXML
     void initialize() {
-       authSignInButton.setOnAction(event ->{
-          signUpNewUser();
-       });
+       authSignInButton.setOnAction(event -> signUpNewUser());
     }
 
     private void signUpNewUser() {
@@ -55,7 +44,7 @@ public class SignUpController {
         String Country = CountryField.getText();
         String Login = LoginField.getText();
         String password = passwordField.getText();
-        String gender = "";
+        String gender;
         if(CheckBoxMale.isSelected())
             gender = "Male";
         else gender = "Female";

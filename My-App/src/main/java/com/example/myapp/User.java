@@ -45,14 +45,6 @@ public class User {
         return gender;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
     public void setLoginName(String loginName) {
         LoginName = loginName;
     }
@@ -61,11 +53,4 @@ public class User {
         this.passwordName = passwordName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 }

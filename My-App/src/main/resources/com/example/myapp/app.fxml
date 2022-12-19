@@ -8,31 +8,36 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myapp.HomeController">
-    <children>
-        <AnchorPane prefHeight="366.0" prefWidth="701.0" style="-fx-background-color: silver;">
-            <children>
-                <AnchorPane layoutY="100.0" prefHeight="300.0" prefWidth="701.0" style="-fx-background-color: white; -fx-border-color: silver;">
-               <children>
-                  <Label layoutX="263.0" layoutY="9.0" prefHeight="47.0" prefWidth="175.0" text="Привет Мир">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="SearchButton" layoutX="260.0" layoutY="85.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="64.0" style="-fx-background-color: silver;" text="Поиск" textFill="#fcfafa" />
-                  <TextField fx:id="SearchField" layoutX="60.0" layoutY="85.0" prefHeight="32.0" prefWidth="200.0" promptText="Найти" />
-                  <ImageView fx:id="ImageView" fitHeight="141.0" fitWidth="352.0" layoutX="191.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextField fx:id="createField" layoutX="360.0" layoutY="85.0" prefHeight="32.0" prefWidth="190.0" promptText="Добавить" />
-                  <Button fx:id="createButton" layoutX="550.0" layoutY="85.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: silver;" text="ОК" />
-                  <Button fx:id="removeButton" layoutX="604.0" layoutY="85.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="70.0" style="-fx-background-color: silver;" text="Удалить" />
-               </children>
-                </AnchorPane>
-                <Label layoutX="288.0" layoutY="26.0" prefHeight="47.0" prefWidth="111.0" text="My-App" textFill="#f8f5f5">
-                    <font>
-                        <Font size="30.0" />
-                    </font>
-                </Label>
-            </children>
+<VBox prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/19"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.myapp.HomeController">
+    <AnchorPane prefHeight="366.0" prefWidth="701.0" style="-fx-background-color: silver;">
+        <AnchorPane layoutY="100.0" prefHeight="300.0" prefWidth="701.0"
+                    style="-fx-background-color: white; -fx-border-color: silver;">
+            <Label layoutX="263.0" layoutY="9.0" prefHeight="47.0" prefWidth="175.0" text="Привет Мир">
+                <font>
+                    <Font size="30.0"/>
+                </font>
+            </Label>
+            <Button fx:id="SearchButton" layoutX="260.0" layoutY="85.0" mnemonicParsing="false"
+                    prefHeight="32.0" prefWidth="64.0" style="-fx-background-color: silver;" text="Поиск"
+                    textFill="#fcfafa"/>
+            <TextField fx:id="SearchField" layoutX="60.0" layoutY="85.0" prefHeight="32.0" prefWidth="200.0"
+                       promptText="Найти"/>
+            <ImageView fx:id="ImageView" fitHeight="141.0" fitWidth="352.0" layoutX="191.0" layoutY="126.0"
+                       pickOnBounds="true" preserveRatio="true"/>
+            <TextField fx:id="createField" layoutX="360.0" layoutY="85.0" prefHeight="32.0" prefWidth="190.0"
+                       promptText="Добавить"/>
+            <Button fx:id="createButton" layoutX="550.0" layoutY="85.0" mnemonicParsing="false"
+                    prefHeight="32.0" prefWidth="54.0" style="-fx-background-color: silver;" text="ОК"
+                    textFill="#fcf9f9"/>
+            <Button fx:id="removeButton" layoutX="604.0" layoutY="85.0" mnemonicParsing="false"
+                    prefHeight="32.0" prefWidth="70.0" style="-fx-background-color: silver;" text="Удалить"
+                    textFill="#fffbfb"/>
         </AnchorPane>
-    </children>
+        <Label layoutX="288.0" layoutY="26.0" prefHeight="47.0" prefWidth="111.0" text="My-App" textFill="#f8f5f5">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Label>
+    </AnchorPane>
 </VBox>
